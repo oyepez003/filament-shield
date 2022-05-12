@@ -7,12 +7,14 @@ use Illuminate\Support\Str;
 
 trait HasPageShield
 {
-    public function mount()
+    public function mount(): void
     {
         if (! static::canView()) {
             $this->notify('warning', __('filament-shield::filament-shield.forbidden'));
 
-            return redirect(config('filament.path'));
+            redirect(config('filament.path'));
+
+            return;
         }
     }
 
